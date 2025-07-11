@@ -29,13 +29,11 @@ steps:
       - '--allow-unauthenticated'
       - '--memory=512Mi'
       - '--timeout=300'
-      - '--set-env-vars=SPREADSHEET_ID=$$SPREADSHEET_ID,DELIVERY_GUY_NAME=$$DELIVERY_GUY_NAME,WEB_CONCURRENCY=1'
-      - '--update-secrets=GOOGLE_CREDENTIALS_B64=GOOGLE_CREDENTIALS_B64:latest'
-    secretEnv: ['SPREADSHEET_ID','DELIVERY_GUY_NAME']
+      - '--set-env-vars=WEB_CONCURRENCY=1'
+      - '--update-secrets=DATABASE_URL=DATABASE_URL:latest'
+    secretEnv: []
 
 availableSecrets:
   secretManager:
-    - versionName: projects/$PROJECT_ID/secrets/SPREADSHEET_ID/versions/latest
-      env: 'SPREADSHEET_ID'
-    - versionName: projects/$PROJECT_ID/secrets/DELIVERY_GUY_NAME/versions/latest
-      env: 'DELIVERY_GUY_NAME'
+    - versionName: projects/$PROJECT_ID/secrets/DATABASE_URL/versions/latest
+      env: 'DATABASE_URL'
